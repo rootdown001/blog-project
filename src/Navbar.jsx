@@ -12,7 +12,7 @@ export default function Navbar() {
           <NavLink to="/users">Users</NavLink>
         </li>
         <li>
-          <NavLink to="todos.html">Todos</NavLink>
+          <NavLink to="/todos">Todos</NavLink>
         </li>
       </ul>
     </nav>
