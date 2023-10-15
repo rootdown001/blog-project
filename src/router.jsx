@@ -5,6 +5,7 @@ import Users from "./Pages/Users";
 import Todos from "./Pages/Todos";
 import Temp from "./Pages/Temp";
 import Post from "./Pages/Post";
+import User from "./Pages/User";
 
 export const router = createBrowserRouter([
   {
@@ -38,10 +39,24 @@ export const router = createBrowserRouter([
       },
       {
         path: "/users",
-        loader: ({ request: { signal } }) => {
-          return fetch("http://127.0.0.1:3000/users", { signal });
-        },
-        element: <Users />,
+        children: [
+          {
+            index: true,
+            loader: ({ request: { signal } }) => {
+              return fetch("http://127.0.0.1:3000/users", { signal });
+            },
+            element: <Users />,
+          },
+          {
+            path: ":id",
+            loader: ({ params, request: { signal } }) => {
+              return fetch(`http://127.0.0.1:3000/users/${params.id}`, {
+                signal,
+              });
+            },
+            element: <User />,
+          },
+        ],
       },
       {
         path: "/todos",

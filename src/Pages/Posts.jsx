@@ -1,4 +1,4 @@
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, NavLink } from "react-router-dom";
 
 export default function Posts() {
   const posts = useLoaderData();
@@ -16,7 +16,9 @@ export default function Posts() {
                 <div className="card-preview-text">{post.body}</div>
               </div>
               <div className="card-footer">
-                <a className="btn">View</a>
+                <NavLink to={`/posts/${post.id}`} className="btn">
+                  View
+                </NavLink>
               </div>
             </div>
           );
