@@ -1,4 +1,4 @@
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, NavLink } from "react-router-dom";
 
 export default function Users() {
   const users = useLoaderData();
@@ -19,7 +19,9 @@ export default function Users() {
                 <div>{user.email}</div>
               </div>
               <div className="card-footer">
-                <a class="btn">View</a>
+                <NavLink to={`/users/${user.id}`} class="btn">
+                  View
+                </NavLink>
               </div>
             </div>
           );
