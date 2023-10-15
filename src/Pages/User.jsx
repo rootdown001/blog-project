@@ -13,10 +13,21 @@ export default function User() {
   } = useFetch(`${URLS.POSTS}?userId=${user.id}`);
   console.log("🚀 ~ file: User.jsx:14 ~ User ~ posts:", posts);
 
+  const {
+    data: todos,
+    isError: isTodosError,
+    isLoading: isTodosLoading,
+  } = useFetch(`${URLS.TODOS}?userId=${user.id}`);
+  console.log("🚀 ~ file: User.jsx:21 ~ User ~ todos:", todos);
+
+  if (isPostsLoading) {
+    return <h2>Loading...</h2>;
+  }
+
   return (
-    <div class="container">
-      <h1 class="page-title">{user.name}</h1>
-      <div class="page-subtitle">{user.email}</div>
+    <div className="container">
+      <h1 className="page-title">{user.name}</h1>
+      <div className="page-subtitle">{user.email}</div>
       <div>
         <b>Company:</b> {user.company.name}
       </div>
@@ -27,37 +38,36 @@ export default function User() {
         <b>Address:</b> {user.address.street} {user.address.suite},{" "}
         {user.address.city}, {user.address.zipcode}
       </div>
-      <h3 class="mt-4 mb-2">Posts</h3>
-      <div class="card-grid">
-        <div class="card">
-          <div class="card-header">
-            sunt aut facere repellat provident occaecati excepturi optio
-            reprehenderit
-          </div>
-          <div class="card-body">
-            <div class="card-preview-text">
-              quia et suscipit suscipit recusandae consequuntur expedita et cum
-              reprehenderit molestiae ut ut quas totam nostrum rerum est autem
-              sunt rem eveniet architecto
-            </div>
-          </div>
-          <div class="card-footer">
-            <a class="btn" href="posts.html">
-              View
-            </a>
-          </div>
-        </div>
+      <h3 className="mt-4 mb-2">Posts</h3>
+      <div className="card-grid">
+        {posts &&
+          posts.map((post) => {
+            return (
+              <div key={post.id} className="card">
+                <div className="card-header">{post.title}</div>
+                <div className="card-body">
+                  <div className="card-preview-text">{post.body}</div>
+                </div>
+                <div className="card-footer">
+                  <a className="btn" href="posts.html">
+                    {/* TODO: NavLink  */}
+                    View
+                  </a>
+                </div>
+              </div>
+            );
+          })}
       </div>
-      <h3 class="mt-4 mb-2">Todos</h3>
+      <h3 className="mt-4 mb-2">Todos</h3>
       <ul>
         <li>delectus aut autem</li>
         <li>quis ut nam facilis et officia qui</li>
         <li>fugiat veniam minus</li>
-        <li class="strike-through">et porro tempora</li>
+        <li className="strike-through">et porro tempora</li>
         <li>laboriosam mollitia et enim quasi adipisci quia provident illum</li>
         <li>qui ullam ratione quibusdam voluptatem quia omnis</li>
         <li>illo expedita consequatur quia in</li>
-        <li class="strike-through">quo adipisci enim quam ut ab</li>
+        <li className="strike-through">quo adipisci enim quam ut ab</li>
       </ul>
     </div>
   );
