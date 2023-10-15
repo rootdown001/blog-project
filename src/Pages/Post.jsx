@@ -1,4 +1,4 @@
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, NavLink } from "react-router-dom";
 import { useFetch } from "../useFetch";
 import { URLS } from "../App";
 
@@ -34,7 +34,7 @@ export default function Post() {
     <div className="container">
       <h1 className="page-title">{post.title}</h1>
       <span className="page-subtitle">
-        By: <a href="user.html">{user?.name}</a>
+        By: <NavLink to={`/users/${user?.id}`}>{user?.name}</NavLink>
       </span>
       <div>{post.body}</div>
       <h3 className="mt-4 mb-2">Comments</h3>
