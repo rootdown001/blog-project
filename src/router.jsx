@@ -71,14 +71,10 @@ export const router = createBrowserRouter([
   },
 ]);
 
-// TODO: why is useNavigation not showing h1 msg
 function NavLayout() {
-  // const { state } = useNavigation();
-  //console.log("state: ", state);
   return (
     <>
       <Navbar />
-      {/* {state === "loading" ? <h2>loading</h2> : <Outlet />} */}
       <Outlet />
     </>
   );
