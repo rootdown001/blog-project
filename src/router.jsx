@@ -6,10 +6,12 @@ import Todos from "./Pages/Todos";
 import Temp from "./Pages/Temp";
 import Post from "./Pages/Post";
 import User from "./Pages/User";
+import Error404 from "./Pages/Error404";
 
 export const router = createBrowserRouter([
   {
     element: <NavLayout />,
+    errorElement: <Error404 />,
     children: [
       { path: "/", element: <Temp /> },
       {
