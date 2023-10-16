@@ -12,7 +12,7 @@ export default function Todos() {
           return (
             <li
               key={todo.id}
-              className={todo.completed === true ? "strike-through" : ""}
+              className={todo.completed ? "strike-through" : ""}
             >
               {todo.title}
             </li>
