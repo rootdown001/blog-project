@@ -9,7 +9,7 @@ export default function Todos() {
   return (
     <>
       <div className={state === "loading" ? "loading-spinner" : ""}></div>
-      <div className={state === "loading" ? "container loading" : ""}>
+      <div className={state === "loading" ? "container loading" : "container"}>
         <h1 className="page-title">Todos</h1>
         <ul>
           {todos.map((todo) => {
