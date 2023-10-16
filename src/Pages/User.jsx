@@ -20,8 +20,12 @@ export default function User() {
   } = useFetch(`${URLS.TODOS}?userId=${user.id}`);
   console.log("🚀 ~ file: User.jsx:21 ~ User ~ todos:", todos);
 
-  if (isPostsLoading) {
+  if (isPostsLoading || isTodosLoading) {
     return <h2>Loading...</h2>;
+  }
+
+  if (isPostsError || isTodosError) {
+    return <h2>Error fetching data...</h2>;
   }
 
   return (
@@ -60,14 +64,18 @@ export default function User() {
       </div>
       <h3 className="mt-4 mb-2">Todos</h3>
       <ul>
-        <li>delectus aut autem</li>
-        <li>quis ut nam facilis et officia qui</li>
-        <li>fugiat veniam minus</li>
-        <li className="strike-through">et porro tempora</li>
-        <li>laboriosam mollitia et enim quasi adipisci quia provident illum</li>
-        <li>qui ullam ratione quibusdam voluptatem quia omnis</li>
-        <li>illo expedita consequatur quia in</li>
-        <li className="strike-through">quo adipisci enim quam ut ab</li>
+        {todos &&
+          todos.map((todo) => {
+            return (
+              <li
+                key={todo.id}
+                className={todo.completed ? "strike-through" : ""}
+              >
+                {console.log(todo)}
+                {todo.title}
+              </li>
+            );
+          })}
       </ul>
     </div>
   );
