@@ -1,4 +1,4 @@
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, NavLink } from "react-router-dom";
 import { useFetch } from "../useFetch";
 import { URLS } from "../App";
 
@@ -53,10 +53,10 @@ export default function User() {
                   <div className="card-preview-text">{post.body}</div>
                 </div>
                 <div className="card-footer">
-                  <a className="btn" href="posts.html">
+                  <NavLink className="btn" to={`/posts/${post.id}`}>
                     {/* TODO: NavLink  */}
                     View
-                  </a>
+                  </NavLink>
                 </div>
               </div>
             );
