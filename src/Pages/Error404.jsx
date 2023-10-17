@@ -1,7 +1,12 @@
+import Navbar from "../Navbar";
+
 export default function Error404() {
   return (
-    <div className="container">
-      <div className="page-title">404 Error</div>
-    </div>
+    <>
+      <Navbar />
+      <div className="container">
+        <div className="page-title error">404 Error - Page not found...</div>
+      </div>
+    </>
   );
 }
