@@ -4,7 +4,7 @@ import { URLS } from "../App";
 
 export default function User() {
   const user = useLoaderData();
-  console.log("🚀 ~ file: User.jsx:5 ~ User ~ user:", user);
+  //   console.log("🚀 ~ file: User.jsx:5 ~ User ~ user:", user);
 
   const { state } = useNavigation();
 
@@ -13,21 +13,41 @@ export default function User() {
     isError: isPostsError,
     isLoading: isPostsLoading,
   } = useFetch(`${URLS.POSTS}?userId=${user.id}`);
-  console.log("🚀 ~ file: User.jsx:14 ~ User ~ posts:", posts);
+  //   console.log("🚀 ~ file: User.jsx:14 ~ User ~ posts:", posts);
 
   const {
     data: todos,
     isError: isTodosError,
     isLoading: isTodosLoading,
   } = useFetch(`${URLS.TODOS}?userId=${user.id}`);
-  console.log("🚀 ~ file: User.jsx:21 ~ User ~ todos:", todos);
+  //   console.log("🚀 ~ file: User.jsx:21 ~ User ~ todos:", todos);
 
   //   if (isPostsLoading || isTodosLoading) {
   //     return <h2>Loading...</h2>;
   //   }
 
-  if (isPostsError || isTodosError) {
+  console.log("env: ", process.env.NODE_ENV);
+
+  //   if (isPostsError || isTodosError) {
+  //     return <h2>Error fetching data...</h2>;
+  //   }
+
+  if (process.env.NODE_ENV === "production" && (isPostsError || isTodosError)) {
     return <h2>Error fetching data...</h2>;
+  }
+
+  if (
+    process.env.NODE_ENV === "development" &&
+    (isPostsError || isTodosError)
+  ) {
+    return (
+      <div>
+        <h2>Error fetching data...</h2>
+        <pre>{`${isPostsError && "Posts Error: " + isPostsError}\n${
+          isTodosError && "Todos Error: " + isTodosError
+        }`}</pre>
+      </div>
+    );
   }
 
   return (
