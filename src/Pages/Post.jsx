@@ -22,9 +22,25 @@ export default function Post() {
   } = useFetch(`${URLS.POSTS}/${post.id}/comments`);
   console.log("🚀 ~ file: Post.jsx:21 ~ Post ~ comments:", comments);
 
-  if (isUsersError || isCommentsError) {
-    // Handle error state
-    return <div>Error occurred while fetching data.</div>;
+  if (
+    process.env.NODE_ENV === "production" &&
+    (isUsersError || isCommentsError)
+  ) {
+    return <h2>Error fetching data...</h2>;
+  }
+
+  if (
+    process.env.NODE_ENV === "development" &&
+    (isUsersError || isCommentsError)
+  ) {
+    return (
+      <div>
+        <h2>Error fetching data...</h2>
+        <pre>{`${isUsersError && "Users Error: " + isUsersError}\n${
+          isCommentsError && "Comments Error: " + isCommentsError
+        }`}</pre>
+      </div>
+    );
   }
 
   return (
