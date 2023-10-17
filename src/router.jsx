@@ -16,10 +16,6 @@ export const router = createBrowserRouter([
       { path: "/", element: <Temp /> },
       {
         path: "/posts",
-        // loader: ({ request: { signal } }) => {
-        //   return fetch("http://127.0.0.1:3000/posts", { signal });
-        // },
-        // element: <Posts />,
         children: [
           {
             index: true,
