@@ -5,7 +5,7 @@ export default function Error404() {
     <>
       <Navbar />
       <div className="container">
-        <div className="page-title error">404 Error - Page not found...</div>
+        <div className="page-title error">404 Error - Page Not Found...</div>
       </div>
     </>
   );
