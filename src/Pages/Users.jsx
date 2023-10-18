@@ -2,7 +2,6 @@ import { useLoaderData, NavLink, useNavigation } from "react-router-dom";
 
 export default function Users() {
   const users = useLoaderData();
-  // console.log("🚀 ~ file: Users.jsx:6 ~ Users ~ users:", users);
 
   const { state } = useNavigation();
 

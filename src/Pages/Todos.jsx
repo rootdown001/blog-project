@@ -2,7 +2,6 @@ import { useLoaderData, useNavigation } from "react-router-dom";
 
 export default function Todos() {
   const todos = useLoaderData();
-  // console.log("🚀 ~ file: Todos.jsx:5 ~ Todos ~ todos:", todos);
 
   const { state } = useNavigation();
 

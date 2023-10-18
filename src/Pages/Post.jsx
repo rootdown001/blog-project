@@ -4,7 +4,6 @@ import { URLS } from "../App";
 
 export default function Post() {
   const post = useLoaderData();
-  // console.log("🚀 ~ file: Post.jsx:5 ~ Post ~ post:", post);
 
   const { state } = useNavigation();
 
@@ -13,14 +12,12 @@ export default function Post() {
     isLoading: isUsersLoading,
     isError: isUsersError,
   } = useFetch(`${URLS.USERS}/${post.userId}`);
-  // console.log("🚀 ~ file: Post.jsx:10 ~ Post ~ users:", user);
 
   const {
     data: comments,
     isLoading: isCommentsLoading,
     isError: isCommentsError,
   } = useFetch(`${URLS.POSTS}/${post.id}/comments`);
-  // console.log("🚀 ~ file: Post.jsx:21 ~ Post ~ comments:", comments);
 
   if (
     process.env.NODE_ENV === "production" &&

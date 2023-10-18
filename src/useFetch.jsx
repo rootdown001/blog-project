@@ -17,12 +17,10 @@ export function useFetch(myUrl, options = {}) {
         if (res.status === 200 || res.status === 201) {
           return res.json();
         } else {
-          //   console.log("res: ", res);
           return Promise.reject(res);
         }
       })
       .then((d) => {
-        // console.log("d: ", d);
         setData(d);
       })
       .catch((e) => {
