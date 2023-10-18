@@ -2,7 +2,7 @@ import { useLoaderData, NavLink, useNavigation } from "react-router-dom";
 
 export default function Posts() {
   const posts = useLoaderData();
-  console.log("🚀 ~ file: Posts.jsx:6 ~ Posts ~ posts:", posts);
+  // console.log("🚀 ~ file: Posts.jsx:6 ~ Posts ~ posts:", posts);
 
   const { state } = useNavigation();
 

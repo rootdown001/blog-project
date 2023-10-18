@@ -22,15 +22,7 @@ export default function User() {
   } = useFetch(`${URLS.TODOS}?userId=${user.id}`);
   //   console.log("🚀 ~ file: User.jsx:21 ~ User ~ todos:", todos);
 
-  //   if (isPostsLoading || isTodosLoading) {
-  //     return <h2>Loading...</h2>;
-  //   }
-
-  console.log("env: ", process.env.NODE_ENV);
-
-  //   if (isPostsError || isTodosError) {
-  //     return <h2>Error fetching data...</h2>;
-  //   }
+  // console.log("env: ", process.env.NODE_ENV);
 
   if (process.env.NODE_ENV === "production" && (isPostsError || isTodosError)) {
     return <h2>Error fetching data...</h2>;
@@ -90,7 +82,6 @@ export default function User() {
                   </div>
                   <div className="card-footer">
                     <NavLink className="btn" to={`/posts/${post.id}`}>
-                      {/* TODO: NavLink  */}
                       View
                     </NavLink>
                   </div>

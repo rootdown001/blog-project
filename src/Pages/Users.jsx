@@ -2,7 +2,7 @@ import { useLoaderData, NavLink, useNavigation } from "react-router-dom";
 
 export default function Users() {
   const users = useLoaderData();
-  console.log("🚀 ~ file: Users.jsx:6 ~ Users ~ users:", users);
+  // console.log("🚀 ~ file: Users.jsx:6 ~ Users ~ users:", users);
 
   const { state } = useNavigation();
 
@@ -22,7 +22,7 @@ export default function Users() {
                   <div>{user.email}</div>
                 </div>
                 <div className="card-footer">
-                  <NavLink to={`/users/${user.id}`} class="btn">
+                  <NavLink to={`/users/${user.id}`} className="btn">
                     View
                   </NavLink>
                 </div>
