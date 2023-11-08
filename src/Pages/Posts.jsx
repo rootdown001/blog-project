@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useLoaderData, NavLink, useNavigation } from "react-router-dom";
+import { getPosts } from "../api/postsGet";
 
 export default function Posts() {
   const posts = useLoaderData();
@@ -32,9 +33,7 @@ export default function Posts() {
 
 function loader({ request: { signal } }) {
   // use axios instead of fetch so we can take advantage of axious features later
-  return axios
-    .get("http://127.0.0.1:3000/posts", { signal })
-    .then((res) => res.data);
+  return getPosts({ signal });
 }
 
 export const PostsRoute = {
