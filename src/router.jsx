@@ -31,11 +31,6 @@ export const router = createBrowserRouter([
               {
                 index: true,
                 ...PostsRoute,
-
-                // element: <Posts />,
-                // loader: ({ request: { signal } }) => {
-                //   return fetch("http://127.0.0.1:3000/posts", { signal });
-                // },
               },
               {
                 path: ":id",
