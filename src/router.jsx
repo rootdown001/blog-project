@@ -7,6 +7,7 @@ import Temp from "./Pages/Temp";
 import Post from "./Pages/Post";
 import User from "./Pages/User";
 import Error404 from "./Pages/Error404";
+import NavLayout from "./layouts/NavLayout";
 
 export const router = createBrowserRouter([
   {
@@ -65,12 +66,3 @@ export const router = createBrowserRouter([
     ],
   },
 ]);
-
-function NavLayout() {
-  return (
-    <>
-      <Navbar />
-      <Outlet />
-    </>
-  );
-}
