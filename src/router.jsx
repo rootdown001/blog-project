@@ -13,6 +13,7 @@ import User from "./Pages/User";
 import Error404 from "./Pages/Error404";
 import NavLayout from "./layouts/NavLayout";
 import { PostsRoute } from "./Pages/Posts";
+import { UsersRoute } from "./Pages/Users";
 
 export const router = createBrowserRouter([
   {
@@ -50,10 +51,8 @@ export const router = createBrowserRouter([
             children: [
               {
                 index: true,
-                element: <Users />,
-                loader: ({ request: { signal } }) => {
-                  return fetch("http://127.0.0.1:3000/users", { signal });
-                },
+                // spread UsersRoute - gives loader & element
+                ...UsersRoute,
               },
               {
                 path: ":id",
