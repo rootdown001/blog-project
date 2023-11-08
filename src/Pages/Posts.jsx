@@ -1,6 +1,6 @@
 import { useLoaderData, NavLink, useNavigation } from "react-router-dom";
 
-export default function Posts() {
+function Posts() {
   const posts = useLoaderData();
 
   const { state } = useNavigation();
@@ -30,4 +30,8 @@ export default function Posts() {
       </div>
     </>
   );
+}
+
+function loader({ request: { signal } }) {
+  return fetch("http://127.0.0.1:3000/posts", { signal });
 }
