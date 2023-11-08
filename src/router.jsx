@@ -1,4 +1,9 @@
-import { Outlet, createBrowserRouter, useNavigation } from "react-router-dom";
+import {
+  Navigate,
+  Outlet,
+  createBrowserRouter,
+  useNavigation,
+} from "react-router-dom";
 import Navbar from "./Navbar";
 import Posts from "./Pages/Posts";
 import Users from "./Pages/Users";
@@ -17,6 +22,8 @@ export const router = createBrowserRouter([
     children: [
       {
         children: [
+          // add Navigate to so "/" goes to "/posts"
+          { index: true, element: <Navigate to="/posts" /> },
           {
             path: "posts",
             loader: ({ request: { signal } }) => {
