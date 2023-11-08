@@ -12,13 +12,12 @@ export const router = createBrowserRouter([
   {
     element: <NavLayout />,
     errorElement: <Error404 />,
+    path: "/",
     children: [
-      { path: "/", element: <Temp /> },
       {
-        path: "/posts",
         children: [
           {
-            index: true,
+            path: "posts",
             loader: ({ request: { signal } }) => {
               return fetch("http://127.0.0.1:3000/posts", { signal });
             },
