@@ -8,7 +8,6 @@ import Navbar from "./Navbar";
 import Posts from "./Pages/Posts";
 import Users from "./Pages/Users";
 import Todos from "./Pages/Todos";
-import Temp from "./Pages/Temp";
 import Post from "./Pages/Post";
 import User from "./Pages/User";
 import Error404 from "./Pages/Error404";
