@@ -12,6 +12,7 @@ import Post from "./Pages/Post";
 import User from "./Pages/User";
 import Error404 from "./Pages/Error404";
 import NavLayout from "./layouts/NavLayout";
+import { PostsRoute } from "./Pages/Posts";
 
 export const router = createBrowserRouter([
   {
@@ -29,10 +30,12 @@ export const router = createBrowserRouter([
               // go to `<Posts>` if "/posts"
               {
                 index: true,
-                element: <Posts />,
-                loader: ({ request: { signal } }) => {
-                  return fetch("http://127.0.0.1:3000/posts", { signal });
-                },
+                ...PostsRoute,
+
+                // element: <Posts />,
+                // loader: ({ request: { signal } }) => {
+                //   return fetch("http://127.0.0.1:3000/posts", { signal });
+                // },
               },
               {
                 path: ":id",
