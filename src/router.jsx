@@ -25,49 +25,60 @@ export const router = createBrowserRouter([
           { index: true, element: <Navigate to="/posts" /> },
           {
             path: "posts",
+            children: [
+              // go to `<Posts>` if "/posts"
+              {
+                index: true,
+                element: <Posts />,
+                loader: ({ request: { signal } }) => {
+                  return fetch("http://127.0.0.1:3000/posts", { signal });
+                },
+              },
+              {
+                path: ":id",
+                loader: ({ params, request: { signal } }) => {
+                  return fetch(`http://127.0.0.1:3000/posts/${params.id}`, {
+                    signal,
+                  });
+                },
+                element: <Post />,
+              },
+            ],
+          },
+
+          // go to `<Users>` if "/users"
+          {
+            path: "users",
+            children: [
+              {
+                index: true,
+                element: <Users />,
+                loader: ({ request: { signal } }) => {
+                  return fetch("http://127.0.0.1:3000/users", { signal });
+                },
+              },
+              {
+                path: ":id",
+                loader: ({ params, request: { signal } }) => {
+                  return fetch(`http://127.0.0.1:3000/users/${params.id}`, {
+                    signal,
+                  });
+                },
+                element: <User />,
+              },
+            ],
+          },
+          // go to `<Todos>` if "/todos"
+          {
+            path: "todos",
+            element: <Todos />,
             loader: ({ request: { signal } }) => {
-              return fetch("http://127.0.0.1:3000/posts", { signal });
+              return fetch("http://127.0.0.1:3000/todos", { signal });
             },
-            element: <Posts />,
           },
-          {
-            path: ":id",
-            loader: ({ params, request: { signal } }) => {
-              return fetch(`http://127.0.0.1:3000/posts/${params.id}`, {
-                signal,
-              });
-            },
-            element: <Post />,
-          },
+          // go to `<Error404>` if no match
+          { path: "*", element: <Error404 /> },
         ],
-      },
-      {
-        path: "/users",
-        children: [
-          {
-            index: true,
-            loader: ({ request: { signal } }) => {
-              return fetch("http://127.0.0.1:3000/users", { signal });
-            },
-            element: <Users />,
-          },
-          {
-            path: ":id",
-            loader: ({ params, request: { signal } }) => {
-              return fetch(`http://127.0.0.1:3000/users/${params.id}`, {
-                signal,
-              });
-            },
-            element: <User />,
-          },
-        ],
-      },
-      {
-        path: "/todos",
-        loader: ({ request: { signal } }) => {
-          return fetch("http://127.0.0.1:3000/todos", { signal });
-        },
-        element: <Todos />,
       },
     ],
   },
