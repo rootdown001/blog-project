@@ -102,3 +102,14 @@ export default function User() {
     </>
   );
 }
+
+function loader({ params, request: { signal } }) {
+  return fetch(`http://127.0.0.1:3000/users/${params.id}`, {
+    signal,
+  });
+}
+
+export const userRoute = {
+  loader,
+  element: <User />,
+};

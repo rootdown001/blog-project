@@ -16,6 +16,7 @@ import { postsRoute } from "./Pages/Posts";
 import { usersRoute } from "./Pages/Users";
 import { todosRoute } from "./Pages/Todos";
 import { postRoute } from "./Pages/Post";
+import { userRoute } from "./Pages/User";
 
 export const router = createBrowserRouter([
   {
@@ -53,12 +54,7 @@ export const router = createBrowserRouter([
               },
               {
                 path: ":id",
-                loader: ({ params, request: { signal } }) => {
-                  return fetch(`http://127.0.0.1:3000/users/${params.id}`, {
-                    signal,
-                  });
-                },
-                element: <User />,
+                ...userRoute,
               },
             ],
           },
