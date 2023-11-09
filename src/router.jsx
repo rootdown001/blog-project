@@ -1,4 +1,4 @@
-import { Navigate, createBrowserRouter } from "react-router-dom";
+import { Navigate, createBrowserRouter, useRouteError } from "react-router-dom";
 import NavLayout from "./layouts/NavLayout";
 import { postsRoute } from "./Pages/Posts";
 import { usersRoute } from "./Pages/Users";
