@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useLoaderData, NavLink, useNavigation } from "react-router-dom";
+import { getUsers } from "../api/usersGet copy";
 
 export default function Users() {
   const users = useLoaderData();
@@ -34,9 +35,7 @@ export default function Users() {
 
 function loader({ request: { signal } }) {
   // use axios instead of fetch so we can take advantage of axious features later
-  return axios
-    .get("http://127.0.0.1:3000/users", { signal })
-    .then((res) => res.data);
+  return getUsers({ signal });
 }
 
 export const UsersRoute = {
