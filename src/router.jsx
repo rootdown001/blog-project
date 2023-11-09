@@ -52,8 +52,8 @@ export const router = createBrowserRouter([
             path: "todos",
             ...todosRoute,
           },
-          // go to `<Error404>` if no match
-          { path: "*", element: <Error404 /> },
+          // 404 Error if no match
+          { path: "*", element: <h1>404 Error - Page Not Found</h1> },
         ],
       },
     ],
