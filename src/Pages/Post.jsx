@@ -1,6 +1,7 @@
 import { useLoaderData, NavLink, useNavigation } from "react-router-dom";
 import { useFetch } from "../useFetch";
 import { URLS } from "../App";
+import { getPost } from "../api/postsGet";
 
 export default function Post() {
   const post = useLoaderData();
@@ -81,7 +82,7 @@ export default function Post() {
 }
 
 function loader({ params, request: { signal } }) {
-  return fetch(`http://127.0.0.1:3000/posts/${params.id}`, {
+  return getPost(params.id, {
     signal,
   });
 }
