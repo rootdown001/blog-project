@@ -1,9 +1,4 @@
-import {
-  Outlet,
-  ScrollRestoration,
-  useLoaderData,
-  useNavigation,
-} from "react-router-dom";
+import { Outlet, ScrollRestoration, useNavigation } from "react-router-dom";
 import Navbar from "../Navbar";
 
 export default function NavLayout() {
