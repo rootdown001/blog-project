@@ -1,5 +1,5 @@
 import { Navigate, createBrowserRouter } from "react-router-dom";
-import Error404 from "./Pages/Error404";
+import Error from "./Pages/Error";
 import NavLayout from "./layouts/NavLayout";
 import { postsRoute } from "./Pages/Posts";
 import { usersRoute } from "./Pages/Users";
@@ -10,10 +10,10 @@ import { userRoute } from "./Pages/User";
 export const router = createBrowserRouter([
   {
     element: <NavLayout />,
-    errorElement: <Error404 />,
     path: "/",
     children: [
       {
+        errorElement: <Error />,
         children: [
           // add Navigate to so "/" goes to "/posts"
           { index: true, element: <Navigate to="/posts" /> },

@@ -1,6 +1,6 @@
 import Navbar from "../Navbar";
 
-export default function Error404() {
+export default function Error() {
   return (
     <>
       <Navbar />
