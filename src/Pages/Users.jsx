@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useLoaderData, NavLink, useNavigation } from "react-router-dom";
-import { getUsers } from "../api/usersGet copy";
+import { getUsers } from "../api/usersGet";
 
 export default function Users() {
   const users = useLoaderData();
@@ -38,7 +38,7 @@ function loader({ request: { signal } }) {
   return getUsers({ signal });
 }
 
-export const UsersRoute = {
+export const usersRoute = {
   loader,
   element: <Users />,
 };

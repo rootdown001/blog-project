@@ -36,7 +36,7 @@ function loader({ request: { signal } }) {
   return getPosts({ signal });
 }
 
-export const PostsRoute = {
+export const postsRoute = {
   loader,
   element: <Posts />,
 };
