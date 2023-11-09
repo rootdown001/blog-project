@@ -1,4 +1,5 @@
 import { useLoaderData, useNavigation } from "react-router-dom";
+import { getTodos } from "../api/todosGet";
 
 export default function Todos() {
   const todos = useLoaderData();
@@ -26,3 +27,12 @@ export default function Todos() {
     </>
   );
 }
+
+function loader({ request: { signal } }) {
+  return getTodos({ signal });
+}
+
+export const todosRoute = {
+  loader,
+  element: <Todos />,
+};

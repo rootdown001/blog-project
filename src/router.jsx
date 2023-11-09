@@ -12,8 +12,9 @@ import Post from "./Pages/Post";
 import User from "./Pages/User";
 import Error404 from "./Pages/Error404";
 import NavLayout from "./layouts/NavLayout";
-import { PostsRoute } from "./Pages/Posts";
-import { UsersRoute } from "./Pages/Users";
+import { postsRoute } from "./Pages/Posts";
+import { usersRoute } from "./Pages/Users";
+import { todosRoute } from "./Pages/Todos";
 
 export const router = createBrowserRouter([
   {
@@ -31,7 +32,7 @@ export const router = createBrowserRouter([
               // go to `<Posts>` if "/posts"
               {
                 index: true,
-                ...PostsRoute,
+                ...postsRoute,
               },
               {
                 path: ":id",
@@ -52,7 +53,7 @@ export const router = createBrowserRouter([
               {
                 index: true,
                 // spread UsersRoute - gives loader & element
-                ...UsersRoute,
+                ...usersRoute,
               },
               {
                 path: ":id",
@@ -68,10 +69,7 @@ export const router = createBrowserRouter([
           // go to `<Todos>` if "/todos"
           {
             path: "todos",
-            element: <Todos />,
-            loader: ({ request: { signal } }) => {
-              return fetch("http://127.0.0.1:3000/todos", { signal });
-            },
+            ...todosRoute,
           },
           // go to `<Error404>` if no match
           { path: "*", element: <Error404 /> },
