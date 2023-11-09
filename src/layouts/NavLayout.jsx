@@ -9,6 +9,7 @@ import Navbar from "../Navbar";
 export default function NavLayout() {
   // get state from useLocation
   const { state } = useNavigation();
+  const isLoading = state === "loading";
 
   return (
     <>
@@ -17,8 +18,8 @@ export default function NavLayout() {
       {/* ad ScrollRestoration to adjust scroll to top when changing pages */}
       <ScrollRestoration />
       {/* div with "container" arount Outlet for spinner */}
-      <div className={state === "loading" ? "loading-spinner" : ""}></div>
-      <div className={state === "loading" ? "container loading" : "container"}>
+      <div className={isLoading ? "loading-spinner" : ""}></div>
+      <div className={`container ${isLoading ? "loading" : ""}`}>
         <Outlet />
       </div>
     </>
