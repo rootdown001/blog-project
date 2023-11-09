@@ -1,5 +1,4 @@
 import { Navigate, createBrowserRouter } from "react-router-dom";
-import Error from "./Pages/Error";
 import NavLayout from "./layouts/NavLayout";
 import { postsRoute } from "./Pages/Posts";
 import { usersRoute } from "./Pages/Users";
@@ -13,7 +12,7 @@ export const router = createBrowserRouter([
     path: "/",
     children: [
       {
-        errorElement: <Error />,
+        errorElement: <ErrorPage />,
         children: [
           // add Navigate to so "/" goes to "/posts"
           { index: true, element: <Navigate to="/posts" /> },
@@ -59,3 +58,13 @@ export const router = createBrowserRouter([
     ],
   },
 ]);
+
+export default function ErrorPage() {
+  const error = useRouteError();
+
+  return (
+    <>
+      <div>error - something is wrong</div>
+    </>
+  );
+}
