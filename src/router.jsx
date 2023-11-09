@@ -15,6 +15,7 @@ import NavLayout from "./layouts/NavLayout";
 import { postsRoute } from "./Pages/Posts";
 import { usersRoute } from "./Pages/Users";
 import { todosRoute } from "./Pages/Todos";
+import { postRoute } from "./Pages/Post";
 
 export const router = createBrowserRouter([
   {
@@ -36,12 +37,7 @@ export const router = createBrowserRouter([
               },
               {
                 path: ":id",
-                loader: ({ params, request: { signal } }) => {
-                  return fetch(`http://127.0.0.1:3000/posts/${params.id}`, {
-                    signal,
-                  });
-                },
-                element: <Post />,
+                ...postRoute,
               },
             ],
           },

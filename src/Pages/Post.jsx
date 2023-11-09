@@ -79,3 +79,14 @@ export default function Post() {
     </>
   );
 }
+
+function loader({ params, request: { signal } }) {
+  return fetch(`http://127.0.0.1:3000/posts/${params.id}`, {
+    signal,
+  });
+}
+
+export const postRoute = {
+  loader,
+  element: <Post />,
+};
