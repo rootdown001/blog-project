@@ -43,7 +43,7 @@ export default function Post() {
 
   return (
     <>
-      <div
+      {/* <div
         className={
           state === "loading" || isUsersLoading || isCommentsLoading
             ? "loading-spinner"
@@ -56,27 +56,27 @@ export default function Post() {
             ? "container loading"
             : "container"
         }
-      >
-        <h1 className="page-title">{post.title}</h1>
-        <span className="page-subtitle">
-          By: <NavLink to={`/users/${user?.id}`}>{user?.name}</NavLink>
-        </span>
-        <div>{post.body}</div>
-        <h3 className="mt-4 mb-2">Comments</h3>
-        <div className="card-stack">
-          {comments &&
-            comments.map((comment) => {
-              return (
-                <div key={comment.id} className="card">
-                  <div className="card-body">
-                    <div className="text-sm mb-1">{comment.email}</div>
-                    {comment.body}
-                  </div>
+      > */}
+      <h1 className="page-title">{post.title}</h1>
+      <span className="page-subtitle">
+        By: <NavLink to={`/users/${user?.id}`}>{user?.name}</NavLink>
+      </span>
+      <div>{post.body}</div>
+      <h3 className="mt-4 mb-2">Comments</h3>
+      <div className="card-stack">
+        {comments &&
+          comments.map((comment) => {
+            return (
+              <div key={comment.id} className="card">
+                <div className="card-body">
+                  <div className="text-sm mb-1">{comment.email}</div>
+                  {comment.body}
                 </div>
-              );
-            })}
-        </div>
+              </div>
+            );
+          })}
       </div>
+      {/* </div> */}
     </>
   );
 }

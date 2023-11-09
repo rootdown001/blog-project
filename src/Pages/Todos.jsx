@@ -8,22 +8,22 @@ export default function Todos() {
 
   return (
     <>
-      <div className={state === "loading" ? "loading-spinner" : ""}></div>
-      <div className={state === "loading" ? "container loading" : "container"}>
-        <h1 className="page-title">Todos</h1>
-        <ul>
-          {todos.map((todo) => {
-            return (
-              <li
-                key={todo.id}
-                className={todo.completed ? "strike-through" : ""}
-              >
-                {todo.title}
-              </li>
-            );
-          })}
-        </ul>
-      </div>
+      {/* <div className={state === "loading" ? "loading-spinner" : ""}></div>
+      <div className={state === "loading" ? "container loading" : "container"}> */}
+      <h1 className="page-title">Todos</h1>
+      <ul>
+        {todos.map((todo) => {
+          return (
+            <li
+              key={todo.id}
+              className={todo.completed ? "strike-through" : ""}
+            >
+              {todo.title}
+            </li>
+          );
+        })}
+      </ul>
+      {/* </div> */}
     </>
   );
 }
