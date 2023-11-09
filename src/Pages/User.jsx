@@ -1,6 +1,7 @@
 import { useLoaderData, NavLink, useNavigation } from "react-router-dom";
 import { useFetch } from "../useFetch";
 import { URLS } from "../App";
+import { getUser } from "../api/usersGet";
 
 export default function User() {
   const user = useLoaderData();
@@ -104,7 +105,7 @@ export default function User() {
 }
 
 function loader({ params, request: { signal } }) {
-  return fetch(`http://127.0.0.1:3000/users/${params.id}`, {
+  return getUser(params.id, {
     signal,
   });
 }

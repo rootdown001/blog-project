@@ -1,15 +1,4 @@
-import {
-  Navigate,
-  Outlet,
-  createBrowserRouter,
-  useNavigation,
-} from "react-router-dom";
-import Navbar from "./Navbar";
-import Posts from "./Pages/Posts";
-import Users from "./Pages/Users";
-import Todos from "./Pages/Todos";
-import Post from "./Pages/Post";
-import User from "./Pages/User";
+import { Navigate, createBrowserRouter } from "react-router-dom";
 import Error404 from "./Pages/Error404";
 import NavLayout from "./layouts/NavLayout";
 import { postsRoute } from "./Pages/Posts";
