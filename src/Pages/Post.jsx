@@ -9,43 +9,8 @@ export default function Post() {
 
   const { state } = useNavigation();
 
-  // if (
-  //   process.env.NODE_ENV === "production" &&
-  //   (isUsersError || isCommentsError)
-  // ) {
-  //   return <h2>Error fetching data...</h2>;
-  // }
-
-  // if (
-  //   process.env.NODE_ENV === "development" &&
-  //   (isUsersError || isCommentsError)
-  // ) {
-  // return (
-  //   <div>
-  //     <h2>Error fetching data...</h2>
-  //     <pre>{`${isUsersError && "Users Error: " + isUsersError}\n${
-  //       isCommentsError && "Comments Error: " + isCommentsError
-  //     }`}</pre>
-  //   </div>
-  // );
-  // }
-
   return (
     <>
-      {/* <div
-        className={
-          state === "loading" || isUsersLoading || isCommentsLoading
-            ? "loading-spinner"
-            : ""
-        }
-      ></div>
-      <div
-        className={
-          state === "loading" || isUsersLoading || isCommentsLoading
-            ? "container loading"
-            : "container"
-        }
-      > */}
       <h1 className="page-title">{post.title}</h1>
       <span className="page-subtitle">
         By: <NavLink to={`/users/${user?.id}`}>{user?.name}</NavLink>
@@ -65,7 +30,6 @@ export default function Post() {
             );
           })}
       </div>
-      {/* </div> */}
     </>
   );
 }
