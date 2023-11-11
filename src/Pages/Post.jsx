@@ -84,18 +84,18 @@ export default function Post() {
 }
 
 async function loader({ params, request: { signal } }) {
-  const comments = await getComments(params.id, {
+  const comments = getComments(params.id, {
     signal,
   });
   const post = await getPost(params.id, {
     signal,
   });
-  const user = await getUser(post.userId, {
+  const user = getUser(post.userId, {
     signal,
   });
   console.log("🚀 ~ file: Post.jsx:95 ~ loader ~ post:", post);
 
-  return { comments, post, user };
+  return { comments: await comments, post, user: await user };
 }
 
 export const postRoute = {
