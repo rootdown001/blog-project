@@ -1,5 +1,4 @@
 import { useLoaderData, NavLink, useNavigation } from "react-router-dom";
-import { useFetch } from "../useFetch";
 import { URLS } from "../App";
 import { getPost } from "../api/postsGet";
 import { getComments } from "../api/commentsGet";
@@ -9,18 +8,6 @@ export default function Post() {
   const { post, comments, user } = useLoaderData();
 
   const { state } = useNavigation();
-
-  // const {
-  //   data: user,
-  //   isLoading: isUsersLoading,
-  //   isError: isUsersError,
-  // } = useFetch(`${URLS.USERS}/${post.userId}`);
-
-  // const {
-  //   data: comments,
-  //   isLoading: isCommentsLoading,
-  //   isError: isCommentsError,
-  // } = useFetch(`${URLS.POSTS}/${post.id}/comments`);
 
   // if (
   //   process.env.NODE_ENV === "production" &&
