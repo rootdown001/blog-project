@@ -25,7 +25,7 @@ export const router = createBrowserRouter([
                 ...postsRoute,
               },
               {
-                path: ":id",
+                path: ":postId",
                 ...postRoute,
               },
             ],

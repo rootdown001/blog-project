@@ -34,17 +34,10 @@ export default function Post() {
   );
 }
 
-async function loader({ params, request: { signal } }) {
-  const comments = getComments(params.id, {
-    signal,
-  });
-  const post = await getPost(params.id, {
-    signal,
-  });
-  const user = getUser(post.userId, {
-    signal,
-  });
-  console.log("🚀 ~ file: Post.jsx:95 ~ loader ~ post:", post);
+async function loader({ request: { signal }, params: { postId } }) {
+  const comments = getComments(postId, { signal });
+  const post = await getPost(postId, { signal });
+  const user = getUser(post.userId, { signal });
 
   return { comments: await comments, post, user: await user };
 }
