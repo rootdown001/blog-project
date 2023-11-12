@@ -3,9 +3,10 @@ import { useFetch } from "../useFetch";
 import { URLS } from "../App";
 import { getUser } from "../api/usersGet";
 import { getPosts } from "../api/postsGet";
-//import { getTodos } from "../api/todosGet";
-import { baseApi } from "../api/base";
+import { getTodos } from "../api/todosGet";
+
 import TodoItem from "../components/TodoItem";
+import PostCard from "../components/PostCard";
 
 export default function User() {
   const { user, todos, posts } = useLoaderData();
@@ -26,22 +27,7 @@ export default function User() {
       </div>
       <h3 className="mt-4 mb-2">Posts</h3>
       <div className="card-grid">
-        {posts &&
-          posts.map((post) => {
-            return (
-              <div key={post.id} className="card">
-                <div className="card-header">{post.title}</div>
-                <div className="card-body">
-                  <div className="card-preview-text">{post.body}</div>
-                </div>
-                <div className="card-footer">
-                  <NavLink className="btn" to={`/posts/${post.id}`}>
-                    View
-                  </NavLink>
-                </div>
-              </div>
-            );
-          })}
+        {posts && posts.map((post) => <PostCard key={post.id} {...post} />)}
       </div>
       <h3 className="mt-4 mb-2">Todos</h3>
       <ul>
@@ -63,8 +49,3 @@ export const userRoute = {
   loader,
   element: <User />,
 };
-
-function getTodos(options) {
-  // use baseApi instead of axios - made with axios.create
-  return baseApi.get("todos", options).then((res) => res.data);
-}

@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useLoaderData, NavLink, useNavigation } from "react-router-dom";
 import { getPosts } from "../api/postsGet";
+import PostCard from "../components/PostCard";
 
 export default function Posts() {
   const posts = useLoaderData();
@@ -12,19 +13,7 @@ export default function Posts() {
       <h1 className="page-title">Posts</h1>
       <div className="card-grid">
         {posts.map((post) => {
-          return (
-            <div key={post.id} className="card">
-              <div className="card-header">{post.title}</div>
-              <div className="card-body">
-                <div className="card-preview-text">{post.body}</div>
-              </div>
-              <div className="card-footer">
-                <NavLink to={`/posts/${post.id}`} className="btn">
-                  View
-                </NavLink>
-              </div>
-            </div>
-          );
+          return <PostCard key={post.id} {...post} />;
         })}
       </div>
     </>
