@@ -7,58 +7,9 @@ import { getTodos } from "../api/todosGet";
 
 export default function User() {
   const { user, todos, posts } = useLoaderData();
-  console.log("🚀 ~ file: User.jsx:10 ~ User ~ posts:", posts);
-  console.log("🚀 ~ file: User.jsx:10 ~ User ~ todos:", todos);
-  console.log("🚀 ~ file: User.jsx:10 ~ User ~ user:", user);
-
-  // const { state } = useNavigation();
-
-  // const {
-  //   data: posts,
-  //   isError: isPostsError,
-  //   isLoading: isPostsLoading,
-  // } = useFetch(`${URLS.POSTS}?userId=${user.id}`);
-
-  // const {
-  //   data: todos,
-  //   isError: isTodosError,
-  //   isLoading: isTodosLoading,
-  // } = useFetch(`${URLS.TODOS}?userId=${user.id}`);
-
-  // if (process.env.NODE_ENV === "production" && (isPostsError || isTodosError)) {
-  //   return <h2>Error fetching data...</h2>;
-  // }
-
-  // if (
-  //   process.env.NODE_ENV === "development" &&
-  //   (isPostsError || isTodosError)
-  // ) {
-  //   return (
-  //     <div>
-  //       <h2>Error fetching data...</h2>
-  //       <pre>{`${isPostsError && "Posts Error: " + isPostsError}\n${
-  //         isTodosError && "Todos Error: " + isTodosError
-  //       }`}</pre>
-  //     </div>
-  //   );
-  // }
 
   return (
     <>
-      {/* <div
-        className={
-          state === "loading" || isPostsLoading || isTodosLoading
-            ? "loading-spinner"
-            : ""
-        }
-      ></div>
-      <div
-        className={
-          state === "loading" || isPostsLoading || isTodosLoading
-            ? "container loading"
-            : "container"
-        }
-      > */}
       <h1 className="page-title">{user.name}</h1>
       <div className="page-subtitle">{user.email}</div>
       <div>
@@ -104,7 +55,6 @@ export default function User() {
             );
           })}
       </ul>
-      {/* </div> */}
     </>
   );
 }
