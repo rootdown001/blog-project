@@ -5,19 +5,14 @@ import TodoItem from "../components/TodoItem";
 export default function Todos() {
   const todos = useLoaderData();
 
-  const { state } = useNavigation();
-
   return (
     <>
-      {/* <div className={state === "loading" ? "loading-spinner" : ""}></div>
-      <div className={state === "loading" ? "container loading" : "container"}> */}
       <h1 className="page-title">Todos</h1>
       <ul>
         {todos.map((todo) => (
           <TodoItem key={todo.id} {...todo} />
         ))}
       </ul>
-      {/* </div> */}
     </>
   );
 }

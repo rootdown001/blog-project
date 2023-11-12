@@ -5,8 +5,6 @@ import { getUsers } from "../api/usersGet";
 export default function Users() {
   const users = useLoaderData();
 
-  const { state } = useNavigation();
-
   return (
     <>
       <h1 className="page-title">Users</h1>

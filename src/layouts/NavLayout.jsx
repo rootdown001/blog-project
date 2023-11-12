@@ -8,11 +8,8 @@ export default function NavLayout() {
 
   return (
     <>
-      {/* call Navbar */}
       <Navbar />
-      {/* ad ScrollRestoration to adjust scroll to top when changing pages */}
       <ScrollRestoration />
-      {/* div with "container" arount Outlet for spinner */}
       <div className={isLoading ? "loading-spinner" : ""}></div>
       <div className={`container ${isLoading ? "loading" : ""}`}>
         <Outlet />

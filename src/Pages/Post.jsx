@@ -1,13 +1,10 @@
 import { useLoaderData, NavLink, useNavigation } from "react-router-dom";
-import { URLS } from "../App";
 import { getPost } from "../api/postsGet";
 import { getComments } from "../api/commentsGet";
 import { getUser } from "../api/usersGet";
 
 export default function Post() {
   const { post, comments, user } = useLoaderData();
-
-  const { state } = useNavigation();
 
   return (
     <>

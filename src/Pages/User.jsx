@@ -1,6 +1,4 @@
 import { useLoaderData, NavLink, useNavigation } from "react-router-dom";
-import { useFetch } from "../useFetch";
-import { URLS } from "../App";
 import { getUser } from "../api/usersGet";
 import { getPosts } from "../api/postsGet";
 import { getTodos } from "../api/todosGet";

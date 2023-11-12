@@ -6,8 +6,6 @@ import PostCard from "../components/PostCard";
 export default function Posts() {
   const posts = useLoaderData();
 
-  const { state } = useNavigation();
-
   return (
     <>
       <h1 className="page-title">Posts</h1>
