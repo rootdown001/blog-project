@@ -3,7 +3,9 @@ import { useFetch } from "../useFetch";
 import { URLS } from "../App";
 import { getUser } from "../api/usersGet";
 import { getPosts } from "../api/postsGet";
-import { getTodos } from "../api/todosGet";
+//import { getTodos } from "../api/todosGet";
+import { baseApi } from "../api/base";
+import TodoItem from "../components/TodoItem";
 
 export default function User() {
   const { user, todos, posts } = useLoaderData();
@@ -43,17 +45,7 @@ export default function User() {
       </div>
       <h3 className="mt-4 mb-2">Todos</h3>
       <ul>
-        {todos &&
-          todos.map((todo) => {
-            return (
-              <li
-                key={todo.id}
-                className={todo.completed ? "strike-through" : ""}
-              >
-                {todo.title}
-              </li>
-            );
-          })}
+        {todos && todos.map((todo) => <TodoItem key={todo.id} {...todo} />)}
       </ul>
     </>
   );
@@ -71,3 +63,8 @@ export const userRoute = {
   loader,
   element: <User />,
 };
+
+function getTodos(options) {
+  // use baseApi instead of axios - made with axios.create
+  return baseApi.get("todos", options).then((res) => res.data);
+}

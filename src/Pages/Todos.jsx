@@ -1,5 +1,6 @@
 import { useLoaderData, useNavigation } from "react-router-dom";
 import { getTodos } from "../api/todosGet";
+import TodoItem from "../components/TodoItem";
 
 export default function Todos() {
   const todos = useLoaderData();
@@ -12,16 +13,9 @@ export default function Todos() {
       <div className={state === "loading" ? "container loading" : "container"}> */}
       <h1 className="page-title">Todos</h1>
       <ul>
-        {todos.map((todo) => {
-          return (
-            <li
-              key={todo.id}
-              className={todo.completed ? "strike-through" : ""}
-            >
-              {todo.title}
-            </li>
-          );
-        })}
+        {todos.map((todo) => (
+          <TodoItem key={todo.id} {...todo} />
+        ))}
       </ul>
       {/* </div> */}
     </>
