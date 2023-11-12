@@ -2,41 +2,46 @@ import { useLoaderData, NavLink, useNavigation } from "react-router-dom";
 import { useFetch } from "../useFetch";
 import { URLS } from "../App";
 import { getUser } from "../api/usersGet";
+import { getPosts } from "../api/postsGet";
+import { getTodos } from "../api/todosGet";
 
 export default function User() {
-  const user = useLoaderData();
+  const { user, todos, posts } = useLoaderData();
+  console.log("🚀 ~ file: User.jsx:10 ~ User ~ posts:", posts);
+  console.log("🚀 ~ file: User.jsx:10 ~ User ~ todos:", todos);
+  console.log("🚀 ~ file: User.jsx:10 ~ User ~ user:", user);
 
-  const { state } = useNavigation();
+  // const { state } = useNavigation();
 
-  const {
-    data: posts,
-    isError: isPostsError,
-    isLoading: isPostsLoading,
-  } = useFetch(`${URLS.POSTS}?userId=${user.id}`);
+  // const {
+  //   data: posts,
+  //   isError: isPostsError,
+  //   isLoading: isPostsLoading,
+  // } = useFetch(`${URLS.POSTS}?userId=${user.id}`);
 
-  const {
-    data: todos,
-    isError: isTodosError,
-    isLoading: isTodosLoading,
-  } = useFetch(`${URLS.TODOS}?userId=${user.id}`);
+  // const {
+  //   data: todos,
+  //   isError: isTodosError,
+  //   isLoading: isTodosLoading,
+  // } = useFetch(`${URLS.TODOS}?userId=${user.id}`);
 
-  if (process.env.NODE_ENV === "production" && (isPostsError || isTodosError)) {
-    return <h2>Error fetching data...</h2>;
-  }
+  // if (process.env.NODE_ENV === "production" && (isPostsError || isTodosError)) {
+  //   return <h2>Error fetching data...</h2>;
+  // }
 
-  if (
-    process.env.NODE_ENV === "development" &&
-    (isPostsError || isTodosError)
-  ) {
-    return (
-      <div>
-        <h2>Error fetching data...</h2>
-        <pre>{`${isPostsError && "Posts Error: " + isPostsError}\n${
-          isTodosError && "Todos Error: " + isTodosError
-        }`}</pre>
-      </div>
-    );
-  }
+  // if (
+  //   process.env.NODE_ENV === "development" &&
+  //   (isPostsError || isTodosError)
+  // ) {
+  //   return (
+  //     <div>
+  //       <h2>Error fetching data...</h2>
+  //       <pre>{`${isPostsError && "Posts Error: " + isPostsError}\n${
+  //         isTodosError && "Todos Error: " + isTodosError
+  //       }`}</pre>
+  //     </div>
+  //   );
+  // }
 
   return (
     <>
@@ -104,10 +109,12 @@ export default function User() {
   );
 }
 
-function loader({ params, request: { signal } }) {
-  return getUser(params.id, {
-    signal,
-  });
+async function loader({ request: { signal }, params: { userId } }) {
+  const user = getUser(userId, { signal });
+  const todos = getTodos({ signal, params: { userId } });
+  const posts = getPosts({ signal, params: { userId } });
+
+  return { user: await user, todos: await todos, posts: await posts };
 }
 
 export const userRoute = {

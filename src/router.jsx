@@ -41,7 +41,7 @@ export const router = createBrowserRouter([
                 ...usersRoute,
               },
               {
-                path: ":id",
+                path: ":userId",
                 ...userRoute,
               },
             ],
